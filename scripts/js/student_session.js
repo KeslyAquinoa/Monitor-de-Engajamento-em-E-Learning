@@ -68,7 +68,7 @@ function showPopup(message) {
     setTimeout(() => {
         popup.classList.remove("show");
         setTimeout(() => popup.classList.add("hidden"), 300);
-    }, 5000);
+    }, 500);
 }
 
 // ===============================
