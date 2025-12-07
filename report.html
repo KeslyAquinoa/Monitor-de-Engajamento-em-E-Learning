@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-Br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório Final de Engajamento</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/main.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <script defer src="scripts/js/report.js"></script>
+</head>
+
+<body class="page-teacher">
+
+    <main class="report-main">
+
+        <div id="reportContainer" class="report-container">
+
+            <header class="report-header">
+                <h1>Relatório Final de Engajamento</h1>
+                <h2 id="reportDate">Data da Análise: --/--/--</h2>
+            </header>
+
+            <section class="summary-metrics">
+                <h3>Resumo da Sessão</h3>
+
+                <div class="metrics-grid">
+                    <p>Duração Total: <span id="metricDuration">--</span></p>
+                    <p>Score Médio: <span id="metricAvgScore" class="score-high">--</span></p>
+                    <p>Picos de Confusão: <span id="metricConfusedCount">--</span></p>
+                    <p>Sessão Analisada: <span id="metricFileName">N/A</span></p>
+                </div>
+
+            </section>
+
+            <hr>
+
+            <section class="chart-section">
+                <h3>Distribuição Emocional Total</h3>
+
+                <div class="chart-box">
+                    <canvas id="emotionPieChart"></canvas>
+                </div>
+
+            </section>
+
+            <hr>
+
+            <section class="log-section">
+                <h3>Momentos de Dúvidas / Dispersão</h3>
+                <ul id="finalEventLog">
+                    <li>Nenhum evento registrado</li>
+                </ul>
+            </section>
+
+            <section class="observations-section">
+                <h3>Observações do Instrutor</h3>
+                <textarea id="profObservations" rows="5"
+                    placeholder="Adicione comentários, recomendações ou o contexto da sessão aqui..."></textarea>
+            </section>
+
+        </div>
+
+        <button id="exportPdfBtn" class="btn-primary export-btn">
+            Exportar Análise para PDF
+        </button>
+
+    </main>
+
+</body>
+
+</html>

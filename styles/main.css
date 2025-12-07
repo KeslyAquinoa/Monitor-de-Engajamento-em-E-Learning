@@ -1,0 +1,957 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', Arial, Helvetica, sans-serif; 
+    box-sizing: border-box;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+body {
+    body{
+    font-family: 'Inter', sans-serif; 
+    color: #333;
+}
+}
+
+/* ============================
+    PAGINA DO INICIAL (Mantido)
+   ============================ */
+
+.page-index {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+
+    
+    background: linear-gradient(135deg, #b8ecf3 0%, #5584b0 80%, #1c466e 100%);
+}
+
+page-index h1 {
+    font-size: 2.5rem;
+}
+
+.central-card-wrapper {
+    width: 100%;
+    max-width: 600px; 
+    
+    /* Design do Cartão Unificado */
+    background-color: transparent;
+    padding: 40px;
+    border-radius: 16px;
+    
+    /* BORDAS E SOMBRA DE ALTO NÍVEL */
+    border: 2px solid #b8ecf3; /* Borda visível e sólida */
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.15); /* Sombra de destaque */
+}
+
+/* Ajustes internos para Header */
+.central-card-wrapper header {
+    /* Remove margens para que o header fique colado na main */
+    padding-bottom: 20px; /* Adiciona padding para separação visual */
+    border-bottom: 1px solid #e0e0e0;
+    text-align: center;
+    margin-bottom: 40px; /* Linha de separação sutil */
+}
+
+.central-card-wrapper main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    margin-top: 20px;
+    width: 100%; 
+}
+
+/* Ajuste o h1 para remover a margem inferior (já temos padding no header) */
+.central-card-wrapper header h1 {
+    margin-bottom: 5px; 
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #1a1a1a;
+}
+
+
+.page-index .subtitle {
+    font-size: 1.1rem;
+    color: #555;
+}
+
+    
+
+#consentBox {
+    display: none;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 14px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 25px;
+}
+
+#consentBox p {
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+
+.checkbox {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+button {
+    width: 400px;
+    padding: 14px 12px;
+    border: none;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.396);
+    border-radius: 12px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.2s ease-in-out;
+}
+
+
+button.student {
+    background-color: #4a7aff;
+}
+
+button.student:hover {
+    background-color: #2f5aff;
+    box-shadow: 0 4px 10px rgba(74, 122, 255, 0.4);
+}
+
+button.teacher {
+    background-color: #ff784a;
+}
+
+button.teacher:hover {
+    background-color: #ff5a1f;
+    box-shadow: 0 4px 10px rgba(255, 120, 74, 0.4);
+}
+
+.error-message {
+    text-align: center;
+    color: red;
+    margin-top: 12px;
+    height: 18px;
+    font-size: 0.95rem;
+}
+
+/* =======================================
+   RESPONSIVIDADE (Telas menores - Celulares e Tablets)
+   ======================================= */
+@media screen and (max-width: 600px) {
+    
+    /* 1. Ajuste do Layout do Cartão Principal */
+    .central-card-wrapper {
+        max-width: 90%; /* Ocupa 90% da largura da tela */
+        padding: 25px; /* Reduz o padding interno para telas pequenas */
+        margin: 20px; /* Adiciona margem externa para não colar nas bordas do celular */
+    }
+
+    /* 2. Redução do Tamanho da Fonte */
+    .central-card-wrapper header h1 {
+        font-size: 1.8rem; /* Reduz o tamanho do título */
+    }
+
+    .central-card-wrapper header {
+        padding-bottom: 15px; /* Ajusta a separação do header */
+    }
+
+    .central-card-wrapper header .subtitle {
+        font-size: 1rem;
+    }
+    
+    /* 3. Ajuste nos Botões */
+    .buttons button {
+        padding: 12px; /* Reduz o padding vertical dos botões */
+        font-size: 1rem; /* Ajusta o tamanho da fonte */
+    }
+
+    #teacherBtn, #studentBtn {
+        max-width: 250px;
+    }
+}
+
+/* ============================
+    PAGINA DO ALUNO 
+   ============================ */
+
+.page-student {
+    /* CORREÇÃO CRUCIAL: Layout lado a lado */
+    /* display: flex;  */
+    width: 100%;
+    min-height: 100vh; 
+    background-color: #f5f6fa;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 280px; 
+    background-color: #1e1f26;
+    color: #fff;
+    padding: 20px;
+    height: 100vh;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    z-index: 100;
+}
+
+.sidebar h2 {
+    margin-bottom: 20px;
+    font-size: 1.4rem;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding-left: 0;
+    /* CORREÇÃO: Menu vertical */
+    display: flex;
+    flex-direction: column; 
+    gap: 8px;
+}
+
+.sidebar ul li {
+    padding: 12px 15px;
+    background-color: #2b2c34;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.sidebar ul li.active {
+    background-color: #4a7aff;
+    font-weight: bold;
+}
+
+.sidebar ul li:hover {
+    background-color: #3a3b44;
+}
+
+.student-main {
+    /* CORREÇÃO: Ocupa todo o espaço restante */
+    margin-left: 280px;
+    flex: 1; 
+    padding: 30px 40px;
+    background-color: #ffffff;
+    overflow-y: auto; /* Permite rolagem apenas no conteúdo principal */
+}
+
+.student-header {
+    margin-bottom: 30px; 
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+}
+
+.student-header h1 {
+    margin-top: 0;
+    font-size: 2.2rem;
+    color: #1e1f26;
+}
+
+.student-status {
+    color: #28a745;
+    font-weight: bold;
+    font-size: 0.9rem;
+    margin: 10px;
+}
+
+.btn-primary {
+    width: 300px;
+}
+
+.lesson-content {
+    /* Removido o flexbox para organização simples vertical do conteúdo */
+    display: block; 
+}
+
+.lesson-media {
+    /* CORREÇÃO: Corrigi o nome da classe */
+    padding: 0;
+    border-radius: 10px;
+    max-width: 100%;
+}
+
+.lesson-media h2 {
+    margin-bottom: 5px;
+    font-size: 1.6rem;
+}
+
+.lesson-media p {
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.lesson-media iframe {
+    /* Garante que o iframe siga o tamanho definido no HTML e tenha um visual limpo */
+    width: 100%;
+    height: 500px; /* Mantém a altura visual padrão */
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border: none; /* Remove borda padrão do iframe */
+}
+
+/* CORREÇÃO: Webcam fixada no canto superior direito */
+.webcam-container {
+    border: 2px solid #4a7aff;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+
+    /* POSIÇÃO FIXA */
+    position: fixed; 
+    top: 25px;       
+    right: 25px;     
+    z-index: 1000;
+}
+
+.webcam-container h2 {
+    margin-bottom: 10px; 
+    font-size: 1rem;
+    color: #4a7aff;
+}
+
+.webcam-container video {
+    width: 200px;
+    height: auto; 
+    border-radius: 8px;
+    border: 1px solid #4a7aff;
+}
+
+.overlay {
+    position: absolute;
+    /* Ajustar posição para cobrir o vídeo */
+    top: 10px; 
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.popup {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #b8ecf396;
+    padding: 15px 25px;
+    border-radius: 16px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    font-size: 1.1rem;
+    font-weight: 600;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: 0.3s ease;
+    max-width: 260px;
+}
+
+.popup.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.hidden {
+    display: none;
+}
+
+/* ============================
+    MODAL DE SUCESSO
+   ============================ */
+.custom-modal-overlay {
+    pointer-events: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Fundo escuro */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000; /* Garante que fique sobre tudo */
+
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.custom-modal-content {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    max-width: 400px;
+    transform: scale(0.8);
+    opacity: 0;
+    transition: all 0.3s ease-out;
+}
+
+.custom-modal-overlay.show {
+    visibility: visible;
+    opacity: 1;
+}
+
+.custom-modal-overlay.show .custom-modal-content {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.custom-modal-content h3 {
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+.custom-modal-content p {
+    color: #555;
+}
+
+@media screen and (max-width: 768px) {
+
+    .student-main {
+        margin-left: 0;
+    }
+    
+    /* 1. Empilhamento Principal */
+    .page-student {
+        flex-direction: column;  /* Coloca sidebar e main um abaixo do outro */
+    }
+
+    /* 2. Sidebar (Menu de Aulas) */
+    .sidebar {
+        width: 100%; /* Ocupa a largura total */
+        height: auto; /* Permite que o menu se ajuste ao conteúdo */
+        padding: 15px 20px;
+
+        position: relative; 
+        top: auto;
+        left: auto;
+        z-index: 10;
+
+        overflow-y: auto;
+    }
+
+    /* 3. Área de Conteúdo */
+    .student-main {
+        padding: 20px 15px; /* Reduz o padding para ganhar espaço */
+    }
+
+    /* 4. Webcam (Correção Crítica de Posicionamento) */
+    .webcam-container {
+        /* Muda de posição FIXA para RELATIVA/ESTÁTICA, empilhando-a */
+        position: relative; 
+        top: auto; 
+        right: auto;
+        width: 50%; /* Ocupa a largura total da tela */
+        margin: 20px auto;
+        /* Remove a sombra excessiva para mobile */
+        box-shadow: none; 
+    }
+
+    /* Ajuste na visualização do vídeo da webcam dentro do container */
+    .webcam-container video {
+        width: 100%; /* Garante que a webcam não passe de 100% (se houver width/height) */
+        max-width: 250px; /* Limita o tamanho para não ficar gigante */
+        margin: 0 auto;
+    }
+
+    /* 5. Header: Garante que os botões (Iniciar/Finalizar) fiquem em linha */
+    .student-header {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+/* ============================
+    PAGINA DO PROFESSOR
+   ============================ */
+
+   .page-teacher {
+    /* display: flex; */
+    min-height: 100vh;
+   }
+
+   .sidebar-teacher {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    height: 100vh;
+    overflow-y: auto;
+    width: 300px;
+    background-color: #464750; /*#1e1f26*/
+    color: #f0f0f0;
+    padding: 20px;
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.4);
+   }
+
+   .sidebar-teacher h2 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 30px;
+   }
+
+   .teacher-main {
+    margin-left:300px;
+    flex: 1;
+    padding: 30px;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: #f7f7f7;
+   }
+
+
+   /* Área de Métricas */
+
+   .metrics-panel {
+    background-color: #2b2c34; 
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+   }
+
+   .metrics-panel h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-top: 15px;
+    color: #b8ecf3;
+    padding-bottom: 8px;
+   }
+
+   .metric-value {
+    font-size: 2.4rem;
+    font-weight: 800;
+    color: #28a745; 
+    margin: 8px 0 15px;
+   }
+   /* Garante que o Canvas seja transparente ao mouse, permitindo cliques */
+/* nos botões ou elementos que estejam por baixo dele. */
+#overlay {
+    pointer-events: none; /* CRUCIAL: Resolve o problema de bloqueio de cliques */
+    z-index: 10;
+}
+
+.gallery-toggle-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    background-color: #37474f; 
+    color: white;
+    cursor: pointer;
+    border-radius: 8px;
+    margin-bottom: 5px;
+}
+
+#toggleIcon {
+    transition: transform 0.3s;
+}
+
+/* Garanta que o vídeo e o canvas estejam 100% sobrepostos e limitados ao container */
+.video-container {
+    position: relative;
+}
+
+.video-container #video,
+.video-container #overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.video-gallery-list {
+    display: flex;
+    flex-direction: column;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+    flex-direction: column;
+    gap: 8px !important;
+    margin-top: 10px;
+    padding: 10px 10px 0 10px;
+    border-top: 1px solid #3a3b44;
+    border-radius: 10px;
+}
+
+.video-gallery-list h3 {
+    font-size: 1.1rem;
+    color: #fff;
+    margin-bottom: 5px;
+}
+
+/* Classe que será adicionada/removida pelo JS para expandir */
+.video-gallery-list.expanded {
+    max-height: 40vh;
+    overflow-y: auto; /* Suficientemente grande para mostrar todos os itens (Estado EXPANDIDO) */
+    padding-bottom: 10px; 
+}
+
+/* Rotação do ícone */
+.gallery-toggle-header .rotated {
+    transform: rotate(180deg);
+}
+
+.btn-gallery-item {
+    margin: 10px;
+    padding: 8px;
+    background-color: #4a7aff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    text-align: left;
+    transition: background-color 0.2s;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.btn-gallery-item:hover {
+    background-color: #2f5aff;
+    transform: translateY(-1px); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+   .metric-value {
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: #28a745;
+    margin: 5px 0 15px;
+   }
+
+   .semaphore {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 10px;
+   }
+
+.semaphore.green { background-color: #28a745; }
+.semaphore.yellow { background-color: #ffc107; }
+.semaphore.red { background-color: #dc3545; }
+.semaphore.neutral { background-color: #6c757d; }
+
+.btn-report {
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: #ff784a;
+    border: none;
+    color: white;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/*Área de Análise Principal */
+
+.analysis-panel {
+    flex-direction: column;
+}
+
+.video-container {
+    background-color: #333;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.video-container video {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.event-log-container {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    height: 700px; /* Altura fixa para controle visual */
+}
+
+.event-log-container h2 {
+    color: #4a7aff;
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+}
+
+#eventLog {
+    height: calc(100% - 40px);
+    list-style: none;
+    padding: 0;
+    font-size: 0.9rem;
+    height: 600px;
+    overflow-y: scroll;
+}
+
+#eventLog li {
+    padding: 5px 0;
+    border-bottom: 1px dotted #eee;
+}
+
+/* =======================================
+   RESPONSIVIDADE - TABLETS E LAPTOPS MENORES
+   ======================================= */
+@media screen and (max-width: 1024px) {
+
+    .sidebar-teacher {
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
+    
+    /* 1. Mudar o conteúdo principal para empilhamento vertical (Vídeo acima do Log) */
+    .teacher-main {
+        margin-left: 300px;
+        flex-direction: column; 
+        gap: 20px; /* Espaço entre o vídeo e o log */
+        padding: 20px;
+        width: calc(100% - 300px);
+        overflow-x: hidden;
+    }
+
+    /* 2. Log de Eventos: Ocupa a largura total abaixo do vídeo */
+    .video-container, .event-log-container {
+        width: 100% !important;
+        max-width: 100%;
+        /* height: auto; */
+        margin: 0;
+    }
+
+    .video-container video,
+    .video-container canvas {
+        width: 100%;
+        height: auto;
+    }
+}
+
+/* =======================================
+   RESPONSIVIDADE - CELULARES E PEQUENOS TABLETS
+   ======================================= */
+@media screen and (max-width: 768px) {
+    
+    /* 1. Sidebar (Menu) - DESATIVAR FIXED */
+    .sidebar-teacher {
+        position: relative; /* Volta ao fluxo normal */
+        width: 100%;
+        margin-left: 0;
+        height: auto;
+    }
+
+    /* 2. Conteúdo Principal (Remover Margem e Padding) */
+    .teacher-main {
+        margin-left: 0; 
+        width: 100%;
+        padding: 15px; 
+    }
+
+    /* 3. Ajuste de Fontes e Elementos */
+    .metric-value {
+        font-size: 1.8rem; /* Reduz o tamanho do score */
+    }
+
+    .sidebar-teacher h2 {
+        font-size: 1.5rem;
+    }
+    
+    /* 4. Vídeo e Log já estão em coluna, mas garanta que o padding/margem sejam mínimos. */
+}
+
+/* ============================
+    PAGINA 3 - REPORT
+   ============================ */
+
+.report-main {
+    max-width: 50vw; 
+    margin: 40px auto;
+    padding: 40px;
+    background-color: #ffffff;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    border: 1px solid #f0f0f0;
+}
+
+.report-container {
+    padding: 20px;
+}
+
+.report-header h1 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #1a1a1a;
+    border-bottom: 3px solid #e0e0e0;
+    padding-bottom: 15px;
+    margin-bottom: 10px;
+}
+
+.report-header h2 {
+    font-size: 1.1rem;
+    color: #555;
+    font-weight: 400;
+    margin-bottom: 30px;
+}
+
+.summary-metrics h3, .log-section h3, .chart-section h3 {
+    color: #4a7aff;
+    font-weight: 600;
+    margin-top: 25px;
+    margin-bottom: 15px;
+}
+
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px 40px;
+    font-size: 1.1rem;
+}
+
+.metrics-grid p {
+    font-weight: 600;
+    color: #444;
+}
+
+.metrics-grid span {
+    font-weight: bold;
+    color: #1a1a1a;
+}
+
+.score-.score-high { color: #28a745; }
+.score-medium { color: #ffc107; }
+.score-low { color: #dc3545; }
+
+.chart-box {
+    width: 100%;
+    max-width: 500px; /* TAMANHO DO GRÁFICO */
+    margin: 20px auto;
+}
+
+#finalEventLog {
+    list-style: none;
+    padding: 10px 0;
+    max-height: 350px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    font-family: monospace;
+}
+
+.finalEventLog li {
+    padding: 6px 0;
+    font-size: 0.95rem;
+    border-bottom: 1px dashed #e0e0e0;
+}
+
+.observations-section h3 {
+    color: #4a7aff;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+#profObservations {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    resize: vertical; /* Permite redimensionar apenas verticalmente */
+    min-height: 120px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+#exportPdfBtn {
+    margin: 0 auto;
+    display: block;
+
+}
+
+.export-btn {
+    align-items: center;
+    margin-top: 30px;
+    background-color: #ff784a;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(255, 120, 74, 0.5);
+}
+
+.export-btn:hover {
+    background-color: #ff5a1f;
+    transform: translateY(-2px);
+}
+
+/* =======================================
+   RESPONSIVIDADE - RELATÓRIO FINAL (MOBILE)
+   ======================================= */
+@media screen and (max-width: 600px) {
+    
+    /* 1. Contêiner Principal do Relatório */
+    .report-main {
+        max-width: 95%; /* Ocupa quase toda a largura */
+        margin: 20px auto; /* Reduz a margem externa */
+        padding: 15px; /* Reduz o padding interno do cartão */
+    }
+
+    /* 2. Títulos e Subtítulos */
+    .report-header h1 {
+        font-size: 1.6rem; /* Reduz o título principal */
+        padding-bottom: 10px;
+    }
+
+    .report-header h2 {
+        font-size: 1rem; /* Reduz o subtítulo */
+    }
+
+    /* 3. Quebra da Grade de Métricas */
+    .metrics-grid {
+        /* Muda de 2 colunas para 1 coluna vertical */
+        grid-template-columns: 1fr; 
+        gap: 15px; /* Espaçamento entre os itens */
+        font-size: 1rem;
+    }
+
+    /* 4. Gráfico (Chart Box) */
+    .chart-box {
+        max-width: 100%; /* Ocupa a largura máxima disponível */
+        height: auto;
+        margin: 15px auto;
+    }
+
+    /* 5. Logs e Observações */
+    #finalEventLog,
+    #profObservations {
+        font-size: 0.9rem;
+        padding: 10px;
+        min-height: 80px; /* Reduz a altura mínima */
+    }
+    
+    /* 6. Botão Exportar */
+    .export-btn {
+        padding: 12px 20px; /* Reduz o padding do botão */
+        font-size: 1rem;
+    }
+}

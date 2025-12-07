@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard do Professor - Análise de Engajamento</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/main.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script defer src="scripts/js/face-api.min.js"></script>
+    <script defer src="scripts/js/teacher_dashboard.js"></script>
+</head>
+
+<body class="page-teacher">
+
+    <aside class="sidebar-teacher">
+        <h2>Painel de Análise</h2>
+
+        <div class="metrics-panel">
+            <p>Gravação Selecionada:</p>
+            <p id="fileNameDisplay" style="font-size: 0.9em; word-wrap: break-word;">Nenhuma.</p>
+
+            <p id="analysisStatus" style="font-weight: bold; margin-top: 10px;">Aguardando modelos...</p>
+
+            <hr style="margin: 20px 0;">
+
+            <div id="galleryToggleBtn" class="gallery-toggle-header">
+                <h3>📂 Gravações Encontradas (Clique aqui)</h3>
+                <span id="toggleIcon">▼</span>
+            </div>
+
+            <div id="videoListContainer" class="video-gallery-list">
+                <h3>Carregando sessões...</h3>
+            </div>
+
+            <hr style="margin: 20px 0;">
+
+            <div class="metric-block">
+                <h3>Semáforo de Foco</h3>
+                <div id="focusSemaphore" class="semaphore neutral"></div>
+            </div>
+
+            <div class="metric-block">
+                <h3>Score de Foco Atual</h3>
+                <p id="focusScore" class="metric-value">0.00</p>
+            </div>
+
+            <div class="metric-block">
+                <h3>Emoção Dominante</h3>
+                <p id="dominantEmotion" class="metric-value" style="font-size: 1.2rem;">---</p>
+            </div>
+        </div>
+
+        <button onclick="window.location.href='report.html'" class="btn-report"
+            style="background-color: #ff784a;">Gerar Relatório Final</button>
+    </aside>
+
+    <main class="teacher-main">
+
+        <section class="analysis-panel">
+
+            <div class="video-container" style="position: relative; width: 640px; height: 480px; margin-bottom: 20px;">
+                <video id="video" controls muted crossorigin="anonymous"></video>
+                <canvas id="overlay" class="overlay" style="position: absolute; top: 0; left: 0;"></canvas>
+            </div>
+
+            <div class="chart-container" style="width: 100%; max-width: 640px;">
+                <h2>Distribuição Emocional (Ao Longo do Tempo)</h2>
+                <canvas id="emotionChart"></canvas>
+            </div>
+        </section>
+
+        <section class="event-log-container">
+            <h2>Registro de Momentos Chave</h2>
+            <ul id="eventLog">
+                <li>[00:00:00] - Análise da gravação iniciada.</li>
+            </ul>
+        </section>
+    </main>
+
+</body>
+
+</html>

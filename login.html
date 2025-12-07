@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitor de Engajamento</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <script defer src="scripts/js/index.js"></script>
+</head>
+<body class="page-index">
+    <div id="login-card" class="central-card-wrapper">
+        <header>
+            <h1>Monitor de Engajamento</h1>
+            <p class="subtitle">Selecione seu perfil para continuar</p>
+        </header>
+        <main>
+            <!-- Caixa de consentimento (escondida inicialmente) -->
+            <section class="consent-box" id="consentBox">
+                <p>
+                    Antes de continuar, precisamos da sua autorização para utilizar a webcam. A análise é realizado somente durante a sessão e segue normas éticas de privacidade.
+                </p>
+                <label class="checkbox">
+                    <input type="checkbox" name="checkbox" id="checkbox">
+                    Autorizo o uso da webcam para análise de expressões faciais durante a sessão.
+                </label>
+            </section>
+            <!-- Botões -->
+            <section class="buttons">
+                <button id="studentBtn" class="student">Sou Aluno</button>
+                <button id="teacherBtn" class="teacher">Sou Professor</button>
+            </section>
+            <p id="error-message" class="error-message"></p>
+        </main>
+    </div>
+</body>
+</html>

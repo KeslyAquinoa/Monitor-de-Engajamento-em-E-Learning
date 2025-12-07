@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sessão do Aluno</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/main.css">
+    <script defer src="scripts/js/face-api.min.js"></script>
+    <script defer src="scripts/js/student_session.js"></script>
+</head>
+
+<body>
+
+    <div class="page-student">
+        <!-- Menu Lateral -->
+        <aside class="sidebar">
+            <h2>Aulas</h2>
+            <ul>
+                <li class="active">Módulo 1</li>
+                <li>Módulo 2</li>
+                <li>Módulo 3</li>
+                <li>Módulo 4</li>
+            </ul>
+        </aside>
+        <!-- Conteúdo Principal -->
+        <main class="student-main">
+            <!-- Cabeçalho -->
+            <header class="student-header">
+                <h1>Sessão do Aluno</h1>
+                <p id="studentStatus" class="student-status">Monitoramento ativo (pausado)</p>
+                <button id="startSessionBtn" class="btn-primary" style="background-color: #28a745; color: white;">▶️
+                    Iniciar
+                    Gravação</button>
+                <button id="endSessionBtn" class="btn-primary"
+                    style="background-color: #d33; color: white; display: none;">⏹️ Finalizar Sessão</button>
+            </header>
+            <!-- Conteúdo da aula -->
+            <section class="lesson-content">
+                <div class="lesson-media">
+                    <h2>Conteúdo da Aula</h2>
+                    <p>Vídeo/PDF/Slides podem ficar aqui</p>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/gBoFivDyqVA?si=I_giwFnad-Ju-vA0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+    </div>
+
+    <!-- Webcam -->
+    <div class="webcam-container">
+        <h2>Sua Webcam</h2>
+        <video id="video" autoplay muted width="350" height="260"></video>
+        <canvas id="overlay" class="overlay"></canvas>
+    </div>
+    </section>
+    </main>
+    <!-- Popups -->
+    <div id="popup" class="popup hidden">
+        <p>POPUP DE ENGAJAMENTO</p>
+    </div>
+    <div id="successModal" class="custom-modal-overlay">
+    </div>
+    <div class="custom-modal-content">
+        <h3 style="color: #28a745;">✅ Gravação Finalizada com Sucesso!</h3>
+        <p>Seu progresso de engajamento foi salvo.</p>
+        <p style="font-size: 0.8em; margin-top: 10px;">Redirecionando em 3 segundos...</p>
+    </div>
+</body>
+
+</html>

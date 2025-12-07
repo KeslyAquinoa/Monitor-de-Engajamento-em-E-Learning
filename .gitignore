@@ -1,0 +1,21 @@
+# Diretórios de Módulo (Dependencies)
+# Não precisamos do node_modules no repositório, pois ele é reconstruído
+# usando o package.json.
+node_modules/
+
+# Arquivos de Vídeo Gravados (Backend)
+# Os vídeos são o OUTPUT do projeto e são muito grandes.
+# Eles devem ser ignorados.
+backend/uploads/*.webm
+backend/uploads/
+*.mp4
+*.mkv
+
+# Arquivos de Sistema Operacional e Cache
+# Arquivos gerados pelo macOS, VS Code, etc.
+.DS_Store
+.vscode/
+
+# Arquivos de Log e Temporários
+*.log
+npm-debug.log*
