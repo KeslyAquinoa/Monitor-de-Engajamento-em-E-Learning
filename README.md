@@ -15,7 +15,9 @@ O objetivo principal é solucionar a **falta de feedback não-verbal** em ambien
 
 ## 🚀 Demonstração (Assista o Vídeo!)
 
-[INSIRA O LINK DO SEU VÍDEO DE DEMONSTRAÇÃO AQUI]
+## 🎬 Demonstração
+
+[![Veja o vídeo](https://img.shields.io/badge/▶-Assistir%20Vídeo-red)](video_exemplo.mp4)
 
 ### 📌 Três Fluxos Principais
 
